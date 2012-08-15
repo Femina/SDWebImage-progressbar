@@ -28,6 +28,13 @@
 - (void)imageDownloader:(SDWebImageDownloader *)downloader didUpdatePartialImage:(UIImage *)image;
 
 /**
+ * Called when progressbar needs to be updated, in other words when we received more data 
+ * @param downloader The SDWebImageDownloader instance
+ * @param data The data received
+ */
+- (void)imageDownloader:(SDWebImageDownloader *)downloader didReceiveData:(NSData *)data;
+
+/**
  * Called when download completed successfuly.
  *
  * @param downloader The SDWebImageDownloader instance

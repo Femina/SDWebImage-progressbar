@@ -340,6 +340,24 @@ static SDWebImageManager *instance;
     }
 }
 
+- (void)imageDownloader:(SDWebImageDownloader *)downloader didReceiveData:(NSData *)data
+{
+    // Notify all the downloadDelegates with this downloader
+    for (NSInteger idx = (NSInteger)[downloaders count] - 1; idx >= 0; idx--)
+    {
+        NSUInteger uidx = (NSUInteger)idx;
+        SDWebImageDownloader *aDownloader = [downloaders objectAtIndex:uidx];
+        if (aDownloader == downloader)
+        {
+            if (data)
+            {
+                //TODO: Implement this3
+            }
+        }
+    }
+}
+
+
 - (void)imageDownloader:(SDWebImageDownloader *)downloader didFinishWithImage:(UIImage *)image
 {
     SDWIRetain(downloader);

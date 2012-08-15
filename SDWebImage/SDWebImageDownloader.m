@@ -21,7 +21,7 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
 @end
 
 @implementation SDWebImageDownloader
-@synthesize url, delegate, connection, imageData, userInfo, lowPriority, progressive;
+@synthesize url, delegate, connection, imageData, userInfo, lowPriority, progressive, expectedSize, receivedData;
 
 #pragma mark Public Methods
 
@@ -116,8 +116,8 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
 {
     if (![response respondsToSelector:@selector(statusCode)] || [((NSHTTPURLResponse *)response) statusCode] < 400)
     {
-        expectedSize = response.expectedContentLength > 0 ? (NSUInteger)response.expectedContentLength : 0;
-        self.imageData = SDWIReturnAutoreleased([[NSMutableData alloc] initWithCapacity:expectedSize]);
+        self.expectedSize = response.expectedContentLength > 0 ? (NSUInteger)response.expectedContentLength : 0;
+        self.imageData = SDWIReturnAutoreleased([[NSMutableData alloc] initWithCapacity:self.expectedSize]);
     }
     else
     {
@@ -141,6 +141,8 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data
 {
+    self.receivedData += [data length];
+    
     [imageData appendData:data];
 
     if (CGImageSourceCreateImageAtIndex == NULL)
@@ -149,7 +151,7 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
         self.progressive = NO;
     }
 
-    if (self.progressive && expectedSize > 0 && [delegate respondsToSelector:@selector(imageDownloader:didUpdatePartialImage:)])
+    if (self.progressive && self.expectedSize > 0 && [delegate respondsToSelector:@selector(imageDownloader:didUpdatePartialImage:)])
     {
         // The following code is from http://www.cocoaintheshell.com/2011/05/progressive-images-download-imageio/
         // Thanks to the author @Nyx0uf
@@ -159,7 +161,7 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
 
         // Update the data source, we must pass ALL the data, not just the new bytes
         CGImageSourceRef imageSource = CGImageSourceCreateIncremental(NULL);
-        CGImageSourceUpdateData(imageSource, (__bridge CFDataRef)imageData, totalSize == expectedSize);
+        CGImageSourceUpdateData(imageSource, (__bridge CFDataRef)imageData, totalSize == self.expectedSize);
 
         if (width + height == 0)
         {
@@ -174,7 +176,7 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
             }
         }
 
-        if (width + height > 0 && totalSize < expectedSize)
+        if (width + height > 0 && totalSize < self.expectedSize)
         {
             // Create the image
             CGImageRef partialImageRef = CGImageSourceCreateImageAtIndex(imageSource, 0, NULL);
