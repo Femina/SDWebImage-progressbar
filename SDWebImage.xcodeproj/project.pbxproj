@@ -137,6 +137,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E776C1E15DE96F7004ACC0A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2E776C2015DE96FF004ACC0A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		53922D64148C55810056699D = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +188,8 @@
 				53922DAA148C56470056699D /* Cache */,
 				53922DAC148C56DD0056699D /* Utils */,
 				53922DA9148C562D0056699D /* Categories */,
+				2E776C2015DE96FF004ACC0A /* Resources */,
+				2E776C1E15DE96F7004ACC0A /* Classes */,
 			);
 			path = SDWebImage;
 			sourceTree = "<group>";
