@@ -143,7 +143,6 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data
 {
-    NSLog(@"SDWebImageDownloader: didReceiveData");
     self.receivedData += [data length];
     
     if ([delegate respondsToSelector:@selector(imageDownloader:didReceiveData:)]) {
