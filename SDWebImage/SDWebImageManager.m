@@ -349,9 +349,13 @@ static SDWebImageManager *instance;
         SDWebImageDownloader *aDownloader = [downloaders objectAtIndex:uidx];
         if (aDownloader == downloader)
         {
-            if (data)
+            id<SDWebImageManagerDelegate> delegate = [downloadDelegates objectAtIndex:uidx];
+            SDWIRetain(delegate);
+            SDWIAutorelease(delegate);
+            
+            if ([delegate respondsToSelector:@selector(webImageManager:didProgress:)])
             {
-                //TODO: Implement this3
+                objc_msgSend(delegate, @selector(webImageManager:didProgress:), self, aDownloader.receivedData / aDownloader.expectedSize);
             }
         }
     }

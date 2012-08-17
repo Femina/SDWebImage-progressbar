@@ -52,4 +52,13 @@
 - (void)webImageManager:(SDWebImageManager *)imageManager didFailWithError:(NSError *)error forURL:(NSURL *)url;
 - (void)webImageManager:(SDWebImageManager *)imageManager didFailWithError:(NSError *)error;
 
+
+/**
+ * Called when progress has been made in downloading the image
+ *
+ * @param imageManager The image manager
+ * @param progress The progress made from 0 to 1
+ */
+- (void)webImageManager:(SDWebImageManager *)imageManager didProgress:(float) progress;
+
 @end
