@@ -165,4 +165,34 @@
     }
 }
 
+- (void)webImageManager:(SDWebImageManager *)imageManager didProgress:(double)progress
+{
+    if (progress > 0) {
+        UIProgressView *progressView = nil;
+        
+        // Check if allocated
+        if ([self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG] == nil)
+        {
+            float progressViewWidth = self.frame.size.width * SDWEBIMAGE_UIVIEW_PROGRESS_WIDTH;
+            progressView = [[UIProgressView alloc] initWithFrame:CGRectMake((self.frame.size.width - progressViewWidth) / 2,
+                                                                            ((self.frame.size.height / 2) - (SDWEBIMAGE_UIVIEW_PROGRESS_HEIGHT / 2)),
+                                                                            progressViewWidth,
+                                                                            SDWEBIMAGE_UIVIEW_PROGRESS_HEIGHT)];
+            progressView.tag = SDWEBIMAGE_UIVIEW_PROGRESS_TAG;
+            [self addSubview:progressView];
+        } else
+        {
+            progressView = (UIProgressView *)[self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG];
+        }
+        progressView.hidden = NO; // TODO: Needed?
+        progressView.progress = progress;
+        
+        // Check if done or not
+        if (progress == 1)
+        {
+            [progressView removeFromSuperview];
+        }
+    }
+}
+
 @end
