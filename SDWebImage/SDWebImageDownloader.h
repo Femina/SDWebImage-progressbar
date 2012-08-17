@@ -34,8 +34,8 @@ extern NSString *const SDWebImageDownloadStopNotification;
 @property (nonatomic, retain) NSMutableData *imageData;
 @property (nonatomic, retain) id userInfo;
 @property (nonatomic, readwrite) BOOL lowPriority;
-@property (readwrite) float expectedSize;
-@property (readwrite) float receivedData;
+@property (readwrite) double expectedSize;
+@property (readwrite) double receivedData;
 
 /**
  * If set to YES, enables progressive download support.

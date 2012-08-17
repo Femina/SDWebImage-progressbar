@@ -59,6 +59,6 @@
  * @param imageManager The image manager
  * @param progress The progress made from 0 to 1
  */
-- (void)webImageManager:(SDWebImageManager *)imageManager didProgress:(float) progress;
+- (void)webImageManager:(SDWebImageManager *)imageManager didProgress:(double) progress;
 
 @end

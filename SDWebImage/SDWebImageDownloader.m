@@ -64,6 +64,8 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
     downloader.delegate = delegate;
     downloader.userInfo = userInfo;
     downloader.lowPriority = lowPriority;
+    downloader.expectedSize = 0;
+    downloader.receivedData = 0;
     [downloader performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:YES];
     return downloader;
 }
@@ -141,7 +143,12 @@ NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNot
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data
 {
+    NSLog(@"SDWebImageDownloader: didReceiveData");
     self.receivedData += [data length];
+    
+    if ([delegate respondsToSelector:@selector(imageDownloader:didReceiveData:)]) {
+        [delegate performSelector:@selector(imageDownloader:didReceiveData:) withObject:self withObject:data];
+    }
     
     [imageData appendData:data];
 
