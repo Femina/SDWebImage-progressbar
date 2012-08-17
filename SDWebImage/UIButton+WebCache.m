@@ -184,7 +184,6 @@
         {
             progressView = (UIProgressView *)[self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG];
         }
-        progressView.hidden = NO; // TODO: Needed?
         progressView.progress = progress;
         
         // Check if done or not
