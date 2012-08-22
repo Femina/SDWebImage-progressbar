@@ -7,6 +7,8 @@
  */
 
 #import "UIImageView+WebCache.h"
+#import "DDProgressView.h"
+
 
 @implementation UIImageView (WebCache)
 
@@ -60,6 +62,7 @@
         [manager downloadWithURL:url delegate:self options:options success:success failure:failure];
     }
 }
+
 #endif
 
 - (void)cancelCurrentImageLoad
@@ -82,34 +85,26 @@
 - (void)webImageManager:(SDWebImageManager *)imageManager didProgress:(double)progress
 {
     if (progress > 0) {
-        UIProgressView *progressView = nil;
-        
-        // Check if allocated
+        DDProgressView *progressView = nil;
         if ([self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG] == nil)
         {
             float progressViewWidth = self.frame.size.width * SDWEBIMAGE_UIVIEW_PROGRESS_WIDTH;
-            progressView = [[UIProgressView alloc] initWithFrame:CGRectMake((self.frame.size.width - progressViewWidth) / 2,
-                                                                           ((self.frame.size.height / 2) - (SDWEBIMAGE_UIVIEW_PROGRESS_HEIGHT / 2)),
-                                                                           progressViewWidth,
-                                                                           SDWEBIMAGE_UIVIEW_PROGRESS_HEIGHT)];
+            progressView = [[DDProgressView alloc] initWithFrame:CGRectMake((self.frame.size.width - progressViewWidth) / 2, self.frame.size.height * SDWEBIMAGE_UIVIEW_PROGRESS_Y, progressViewWidth, 5)];
             progressView.tag = SDWEBIMAGE_UIVIEW_PROGRESS_TAG;
+            progressView.outerColor = [UIColor grayColor];
+            progressView.innerColor = [UIColor lightGrayColor];
             [self addSubview:progressView];
         } else
         {
-            progressView = (UIProgressView *)[self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG];
+            progressView = (DDProgressView *)[self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG];
         }
         progressView.progress = progress;
         
-        // Check if done or not
         if (progress == 1)
         {
             [progressView removeFromSuperview];
         }
     }
 }
-
-
-
-
 
 @end
