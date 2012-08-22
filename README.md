@@ -12,7 +12,7 @@ This repo is done to implement a progressbar directly in the SDWebImage componen
 
 How to use
 ----------
-Just use SDWebImage as usual.
+Follow these instructions (original repo): https://github.com/rs/SDWebImage  
 
 Screenshot
 ----------
