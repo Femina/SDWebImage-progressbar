@@ -2,6 +2,7 @@ SDWebImage
 =========
 
 Check out the original repo for more information on how to install this.
+
 Progressbar used: https://github.com/ddeville/DDProgressView
 
 Purpose
