@@ -16,10 +16,13 @@
 @interface UIButton (WebCache) <SDWebImageManagerDelegate>
 
 
-// Define the tag used for finding the progressview
+/**
+ * Define some constants used for the default UIProgressView
+ */
 #define SDWEBIMAGE_UIVIEW_PROGRESS_TAG 123451
-#define SDWEBIMAGE_UIVIEW_PROGRESS_WIDTH 0.7 // The ratio of progressview/imageview
-#define SDWEBIMAGE_UIVIEW_PROGRESS_HEIGHT 15 // Number of pixels high (Doesn't make sense to use a ratio here)
+#define SDWEBIMAGE_UIVIEW_PROGRESS_WIDTH 0.7
+#define SDWEBIMAGE_UIVIEW_PROGRESS_Y 0.8
+
 
 /**
  * Set the imageView `image` with an `url`.
