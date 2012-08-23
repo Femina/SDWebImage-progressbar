@@ -18,7 +18,7 @@
 
 - (id)init
 {
-    self.frame = CGRectMake(100, 100, 100, 5);
+    self.frame = CGRectZero;
     self.innerColor = [UIColor lightGrayColor];
     self.outerColor = [UIColor grayColor];
     self.innerspacing = 1.5;

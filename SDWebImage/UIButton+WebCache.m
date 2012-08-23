@@ -199,6 +199,11 @@ static char const * const PBInfoKey = "PBInfoKey";
             if (self.pbInfo == nil)
             {
                 self.pbInfo = [[ProgressBarInfo alloc] init];
+            }
+            
+            // Check if frame is default, which we don't want
+            if (CGRectIsEmpty(self.pbInfo.frame))
+            {
                 self.pbInfo.frame = CGRectMake((self.frame.size.width - progressViewWidth) / 2, self.frame.size.height * SDWEBIMAGE_UIVIEW_PROGRESS_Y, progressViewWidth, 5);
             }
             
