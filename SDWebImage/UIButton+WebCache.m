@@ -25,12 +25,14 @@ static char const * const PBInfoKey = "PBInfoKey";
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
-    [self setImageWithURL:url placeholderImage:placeholder options:0];
+    [self setImageWithURL:url placeholderImage:placeholder options:0 progressBarInfo:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progressBarInfo:(ProgressBarInfo *)progressBarInfo
 {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
+    self.pbInfo = progressBarInfo;
 
     // Remove in progress downloader from queue
     [manager cancelForDelegate:self];
@@ -54,13 +56,15 @@ static char const * const PBInfoKey = "PBInfoKey";
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
 {
-    [self setImageWithURL:url placeholderImage:placeholder options:0 success:success failure:failure];
+    [self setImageWithURL:url placeholderImage:placeholder options:0 success:success failure:failure progressBarInfo:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure progressBarInfo:(ProgressBarInfo *)progressBarInfo;
 {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
+    self.pbInfo = progressBarInfo;
+    
     // Remove in progress downloader from queue
     [manager cancelForDelegate:self];
 
@@ -82,13 +86,15 @@ static char const * const PBInfoKey = "PBInfoKey";
 
 - (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
-    [self setBackgroundImageWithURL:url placeholderImage:placeholder options:0];
+    [self setBackgroundImageWithURL:url placeholderImage:placeholder options:0 progressBarInfo:nil];
 }
 
-- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options
+- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progressBarInfo:(ProgressBarInfo *)progressBarInfo
 {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
+    self.pbInfo = progressBarInfo;
+    
     // Remove in progress downloader from queue
     [manager cancelForDelegate:self];
 
@@ -111,13 +117,15 @@ static char const * const PBInfoKey = "PBInfoKey";
 
 - (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
 {
-    [self setBackgroundImageWithURL:url placeholderImage:placeholder options:0 success:success failure:failure];
+    [self setBackgroundImageWithURL:url placeholderImage:placeholder options:0 success:success failure:failure progressBarInfo:nil];
 }
 
-- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure progressBarInfo:(ProgressBarInfo *)progressBarInfo;
 {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
+    self.pbInfo = progressBarInfo;
+    
     // Remove in progress downloader from queue
     [manager cancelForDelegate:self];
 
