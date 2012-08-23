@@ -16,11 +16,16 @@
 	UIColor *innerColor ;
 	UIColor *outerColor ;
     UIColor *emptyColor ;
+    float innerSpacing;
 }
 
 @property (nonatomic,retain) UIColor *innerColor ;
 @property (nonatomic,retain) UIColor *outerColor ;
 @property (nonatomic,retain) UIColor *emptyColor ;
 @property (nonatomic,assign) float progress ;
+@property (nonatomic,assign) float innerSpacing ;
+
+
+- (id)initWithFrame:(CGRect)frame innerSpacing:(float)space;
 
 @end

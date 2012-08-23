@@ -17,13 +17,14 @@
 @synthesize outerColor ;
 @synthesize emptyColor ;
 @synthesize progress ;
+@synthesize innerSpacing;
 
 - (id)init
 {
 	return [self initWithFrame: CGRectZero] ;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame innerSpacing:(float)space
 {
 	self = [super initWithFrame: frame] ;
 	if (self)
@@ -32,10 +33,17 @@
 		self.innerColor = [UIColor lightGrayColor] ;
 		self.outerColor = [UIColor lightGrayColor] ;
 		self.emptyColor = [UIColor clearColor] ;
+        self.innerSpacing = space;
 		if (frame.size.width == 0.0f)
 			frame.size.width = kProgressBarWidth ;
 	}
 	return self ;
+}
+
+- (void)setInnerSpacing:(float)spacing
+{
+    innerSpacing = spacing;
+    [self setNeedsDisplay];
 }
 
 - (void)setProgress:(float)theProgress
@@ -91,7 +99,7 @@
 	CGContextDrawPath(context, kCGPathStroke) ;
     
     // draw the empty rounded rectangle (shown for the "unfilled" portions of the progress
-    rect = CGRectInset(rect, 1.5f, 1.5f) ;
+    rect = CGRectInset(rect, self.innerSpacing, self.innerSpacing) ;
 	radius = 0.5f * rect.size.height ;
 	
 	[emptyColor setFill] ;
