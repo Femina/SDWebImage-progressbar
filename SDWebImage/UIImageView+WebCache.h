@@ -85,8 +85,9 @@
  * @param url The url for the image.
  * @param placeholder The image to be set initially, until the image request finishes.
  * @param options The options to use when downloading the image. @see SDWebImageOptions for the possible values.
+ * @param progressBarInfo An object to hold the configuration for the progressbar
  */
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options;
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progressBarInfo:(ProgressBarInfo *)progressBarInfo;
 
 #if NS_BLOCKS_AVAILABLE
 /**
@@ -122,8 +123,9 @@
  * @param options The options to use when downloading the image. @see SDWebImageOptions for the possible values.
  * @param success A block to be executed when the image request succeed This block has no return value and takes the retrieved image as argument.
  * @param failure A block object to be executed when the image request failed. This block has no return value and takes the error object describing the network or parsing error that occurred (may be nil).
+ * @param progressBarInfo An object to hold the configuration for the progressbar
  */
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure progressBarInfo:(ProgressBarInfo *)progressBarInfo;
 #endif
 
 /**
