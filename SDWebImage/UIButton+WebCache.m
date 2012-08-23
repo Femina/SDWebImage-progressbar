@@ -12,7 +12,7 @@
 #import <objc/runtime.h>
 
 
-static char const * const PBInfoKey = "ObjectTag";
+static char const * const PBInfoKey = "PBInfoKey";
 
 @implementation UIButton (WebCache)
 

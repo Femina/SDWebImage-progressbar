@@ -9,6 +9,7 @@
 #import "SDWebImageCompat.h"
 #import "SDWebImageManagerDelegate.h"
 #import "SDWebImageManager.h"
+#import "ProgressBarInfo.h"
 
 /**
  * Integrates SDWebImage async downloading and caching of remote images with UIImageView.
@@ -45,12 +46,16 @@
 @interface UIImageView (WebCache) <SDWebImageManagerDelegate>
 
 /**
+ * Variable to hold information about the progressbar
+ */
+@property (nonatomic, retain) ProgressBarInfo *pbInfo;
+
+/**
  * Define some constants used for the default UIProgressView
  */
 #define SDWEBIMAGE_UIVIEW_PROGRESS_TAG 123451
 #define SDWEBIMAGE_UIVIEW_PROGRESS_WIDTH 0.7
-#define SDWEBIMAGE_UIVIEW_PROGRESS_Y 0.6
-
+#define SDWEBIMAGE_UIVIEW_PROGRESS_Y 0.8
 
 /**
  * Set the imageView `image` with an `url`.
