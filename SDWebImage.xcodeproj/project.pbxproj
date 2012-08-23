@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E1D9ABB15E530230052F85E /* DDProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AB915E530230052F85E /* DDProgressView.h */; };
-		2E1D9ABC15E530230052F85E /* DDProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AB915E530230052F85E /* DDProgressView.h */; };
-		2E1D9ABD15E530230052F85E /* DDProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AB915E530230052F85E /* DDProgressView.h */; };
+		2E1D9ABB15E530230052F85E /* DDProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AB915E530230052F85E /* DDProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E1D9ABC15E530230052F85E /* DDProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AB915E530230052F85E /* DDProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E1D9ABD15E530230052F85E /* DDProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AB915E530230052F85E /* DDProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E1D9ABE15E530230052F85E /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D9ABA15E530230052F85E /* DDProgressView.m */; };
 		2E1D9ABF15E530230052F85E /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D9ABA15E530230052F85E /* DDProgressView.m */; };
 		2E1D9AC015E530230052F85E /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D9ABA15E530230052F85E /* DDProgressView.m */; };
+		2E1D9AC315E6268C0052F85E /* ProgressBarInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AC115E6268C0052F85E /* ProgressBarInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E1D9AC415E6268C0052F85E /* ProgressBarInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AC115E6268C0052F85E /* ProgressBarInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E1D9AC515E6268C0052F85E /* ProgressBarInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E1D9AC115E6268C0052F85E /* ProgressBarInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E1D9AC615E6268C0052F85E /* ProgressBarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D9AC215E6268C0052F85E /* ProgressBarInfo.m */; };
+		2E1D9AC715E6268C0052F85E /* ProgressBarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D9AC215E6268C0052F85E /* ProgressBarInfo.m */; };
+		2E1D9AC815E6268C0052F85E /* ProgressBarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D9AC215E6268C0052F85E /* ProgressBarInfo.m */; };
 		531041C4157EAFA400BBABC3 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 53922D86148C56230056699D /* SDImageCache.m */; };
 		531041C5157EAFA400BBABC3 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 53922D8A148C56230056699D /* SDWebImageDecoder.m */; };
 		531041C6157EAFA400BBABC3 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53922D8C148C56230056699D /* SDWebImageDownloader.m */; };
@@ -83,6 +89,8 @@
 /* Begin PBXFileReference section */
 		2E1D9AB915E530230052F85E /* DDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDProgressView.h; sourceTree = "<group>"; };
 		2E1D9ABA15E530230052F85E /* DDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDProgressView.m; sourceTree = "<group>"; };
+		2E1D9AC115E6268C0052F85E /* ProgressBarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBarInfo.h; sourceTree = "<group>"; };
+		2E1D9AC215E6268C0052F85E /* ProgressBarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBarInfo.m; sourceTree = "<group>"; };
 		531041E0157EAFA400BBABC3 /* libSDWebImageARC+MKAnnotation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSDWebImageARC+MKAnnotation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		535699B415113E7300A4C397 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+WebCache.h"; path = "SDWebImage/MKAnnotationView+WebCache.h"; sourceTree = SOURCE_ROOT; };
 		535699B515113E7300A4C397 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+WebCache.m"; path = "SDWebImage/MKAnnotationView+WebCache.m"; sourceTree = SOURCE_ROOT; };
@@ -150,6 +158,8 @@
 			children = (
 				2E1D9AB915E530230052F85E /* DDProgressView.h */,
 				2E1D9ABA15E530230052F85E /* DDProgressView.m */,
+				2E1D9AC115E6268C0052F85E /* ProgressBarInfo.h */,
+				2E1D9AC215E6268C0052F85E /* ProgressBarInfo.m */,
 			);
 			name = Progress;
 			sourceTree = "<group>";
@@ -262,6 +272,7 @@
 				531041DA157EAFA400BBABC3 /* UIButton+WebCache.h in Headers */,
 				531041DB157EAFA400BBABC3 /* UIImageView+WebCache.h in Headers */,
 				531041DC157EAFA400BBABC3 /* MKAnnotationView+WebCache.h in Headers */,
+				2E1D9AC515E6268C0052F85E /* ProgressBarInfo.h in Headers */,
 				2E1D9ABD15E530230052F85E /* DDProgressView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +293,7 @@
 				5376131F155AD0D5005750A4 /* UIButton+WebCache.h in Headers */,
 				53761320155AD0D5005750A4 /* UIImageView+WebCache.h in Headers */,
 				2E1D9ABC15E530230052F85E /* DDProgressView.h in Headers */,
+				2E1D9AC415E6268C0052F85E /* ProgressBarInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +313,7 @@
 				53922DA5148C56230056699D /* UIButton+WebCache.h in Headers */,
 				53922DA7148C56230056699D /* UIImageView+WebCache.h in Headers */,
 				2E1D9ABB15E530230052F85E /* DDProgressView.h in Headers */,
+				2E1D9AC315E6268C0052F85E /* ProgressBarInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +413,7 @@
 				531041CA157EAFA400BBABC3 /* UIImageView+WebCache.m in Sources */,
 				531041CB157EAFA400BBABC3 /* MKAnnotationView+WebCache.m in Sources */,
 				2E1D9AC015E530230052F85E /* DDProgressView.m in Sources */,
+				2E1D9AC815E6268C0052F85E /* ProgressBarInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +429,7 @@
 				5376130E155AD0D5005750A4 /* UIButton+WebCache.m in Sources */,
 				5376130F155AD0D5005750A4 /* UIImageView+WebCache.m in Sources */,
 				2E1D9ABF15E530230052F85E /* DDProgressView.m in Sources */,
+				2E1D9AC715E6268C0052F85E /* ProgressBarInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +445,7 @@
 				53922DA6148C56230056699D /* UIButton+WebCache.m in Sources */,
 				53922DA8148C56230056699D /* UIImageView+WebCache.m in Sources */,
 				2E1D9ABE15E530230052F85E /* DDProgressView.m in Sources */,
+				2E1D9AC615E6268C0052F85E /* ProgressBarInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,14 @@
 #import "UIButton+WebCache.h"
 #import "SDWebImageManager.h"
 #import "DDProgressView.h"
+#import <objc/runtime.h>
+
+
+static char const * const PBInfoKey = "ObjectTag";
 
 @implementation UIButton (WebCache)
+
+@dynamic pbInfo;
 
 - (void)setImageWithURL:(NSURL *)url
 {
@@ -169,19 +175,41 @@
 - (void)webImageManager:(SDWebImageManager *)imageManager didProgress:(double)progress
 {
     if (progress > 0) {
+        
+        if (self.pbInfo != nil && self.pbInfo.hidden == YES)
+        {
+            return;
+        }
+        
         DDProgressView *progressView = nil;
+        
         if ([self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG] == nil)
         {
             float progressViewWidth = self.frame.size.width * SDWEBIMAGE_UIVIEW_PROGRESS_WIDTH;
-            progressView = [[DDProgressView alloc] initWithFrame:CGRectMake((self.frame.size.width - progressViewWidth) / 2, self.frame.size.height * SDWEBIMAGE_UIVIEW_PROGRESS_Y, progressViewWidth, 5)];
+            
+            // Check if pbInfo is set
+            if (self.pbInfo == nil)
+            {
+                self.pbInfo = [[ProgressBarInfo alloc] init];
+                self.pbInfo.frame = CGRectMake((self.frame.size.width - progressViewWidth) / 2, self.frame.size.height * SDWEBIMAGE_UIVIEW_PROGRESS_Y, progressViewWidth, 5);
+            }
+            
+            // Alloc the progressbar
+            progressView = [[DDProgressView alloc] initWithFrame:self.pbInfo.frame innerSpacing:self.pbInfo.innerspacing];
             progressView.tag = SDWEBIMAGE_UIVIEW_PROGRESS_TAG;
-            progressView.outerColor = [UIColor grayColor];
-            progressView.innerColor = [UIColor lightGrayColor];
+            // Set the properties from the pbinfo object
+            progressView.outerColor = self.pbInfo.outerColor;
+            progressView.innerColor = self.pbInfo.innerColor;
+            progressView.hidden = self.pbInfo.hidden;
+            
+            NSLog(@"progressview: %@", progressView);
+            
             [self addSubview:progressView];
         } else
         {
             progressView = (DDProgressView *)[self viewWithTag:SDWEBIMAGE_UIVIEW_PROGRESS_TAG];
         }
+        
         progressView.progress = progress;
             
         if (progress == 1)
@@ -189,6 +217,18 @@
             [progressView removeFromSuperview];
         }
     }
+}
+
+#pragma mark - Progressbar info getter/settr
+
+- (ProgressBarInfo *)pbInfo
+{
+     return objc_getAssociatedObject(self, PBInfoKey);
+}
+
+- (void)setPbInfo:(ProgressBarInfo *)pbInfo
+{
+    objc_setAssociatedObject(self, PBInfoKey, pbInfo, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

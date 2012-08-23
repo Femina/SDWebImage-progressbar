@@ -9,12 +9,17 @@
 #import "SDWebImageCompat.h"
 #import "SDWebImageManagerDelegate.h"
 #import "SDWebImageManager.h"
+#import "ProgressBarInfo.h"
 
 /**
  * Integrates SDWebImage async downloading and caching of remote images with UIButtonView.
  */
 @interface UIButton (WebCache) <SDWebImageManagerDelegate>
 
+/**
+ * Variable to hold information about the progressbar
+ */
+@property (nonatomic, retain) ProgressBarInfo *pbInfo;
 
 /**
  * Define some constants used for the default UIProgressView
