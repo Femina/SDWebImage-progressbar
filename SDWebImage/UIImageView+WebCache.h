@@ -55,7 +55,7 @@
  */
 #define SDWEBIMAGE_UIVIEW_PROGRESS_TAG 123451
 #define SDWEBIMAGE_UIVIEW_PROGRESS_WIDTH 0.7
-#define SDWEBIMAGE_UIVIEW_PROGRESS_Y 0.8
+#define SDWEBIMAGE_UIVIEW_PROGRESS_Y 0.5
 
 /**
  * Set the imageView `image` with an `url`.
