@@ -214,9 +214,7 @@ static char const * const PBInfoKey = "PBInfoKey";
             progressView.outerColor = self.pbInfo.outerColor;
             progressView.innerColor = self.pbInfo.innerColor;
             progressView.hidden = self.pbInfo.hidden;
-            
-            NSLog(@"progressview: %@", progressView);
-            
+                        
             [self addSubview:progressView];
         } else
         {
